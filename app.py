@@ -17,30 +17,31 @@ import io
 class_info = {
     0: {
         'name': 'Alternaria',
-        'description': 'This class represents a unhealthy pomegranate.',
+        'description': 'This image represents pomegranate affected by Alternaria. To prevent this disease, ensure proper air circulation, prune affected branches, and use fungicides.',
         'translation_key': 'disease0_translation_key',
     },
     1: {
         'name': 'Anthracnose',
-        'description': 'This class represents the first type of pomegranate disease.',
+        'description': 'This image represents Anthracnose. Prevent Anthracnose by avoiding overhead watering, providing good drainage, and applying fungicides.',
         'translation_key': 'disease1_translation_key',
     },
     2: {
         'name': 'Bacterial_Blight',
-        'description': 'This class represents the second type of pomegranate disease.',
+        'description': 'This image represents Bacterial Blight. Prevent Bacterial Blight by pruning infected branches, using disease-free seeds, and applying copper-based sprays.',
         'translation_key': 'disease2_translation_key',
     },
     3: {
         'name': 'Cercospora',
-        'description': 'This class represents the second type of pomegranate disease.',
+        'description': 'This image represents Cercospora. To prevent Cercospora, practice crop rotation, remove infected leaves, and use fungicides.',
         'translation_key': 'disease14_translation_key',
     },
     4: {
         'name': 'Healthy',
-        'description': 'This class represents the first type of pomegranate disease.',
+        'description': 'This image represents a healthy, disease-free pomegranate. Maintain good orchard hygiene, provide adequate nutrition, and monitor for early signs of diseases to keep your pomegranate plants healthy.',
         'translation_key': 'healthy_translation_key',
     },
 }
+
 def translate_text_rapidapi(text_to_translate, target_language):
     if target_language == 'en':
         return text_to_translate
@@ -128,6 +129,7 @@ except Exception as ex:
         f"Unable to load model. Check the specified path: {model_path}")
     st.error(ex)
 
+
 if st.sidebar.button('Detect Objects'):
     res = model.predict(uploaded_image, conf=confidence)
     boxes = res[0].boxes
@@ -173,5 +175,3 @@ if st.sidebar.button('Detect Objects'):
         except Exception as ex:
             st.write("")
 
-
-# /////////////////////////////////////////////////////////////////////////////////////////////////////
